@@ -1,0 +1,17 @@
+{
+  "name": "api-ready-set-hire-requests",
+  "version": "1.0.0",
+  "main": "answerRequests.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "zod": "^4.1.9"
+  }
+}
