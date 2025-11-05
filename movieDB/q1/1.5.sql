@@ -1,0 +1,7 @@
+-- Virtual View Performance
+EXPLAIN ANALYZE
+SELECT * FROM V_HR_MU_2010_ACTORS;
+
+-- Materialized View Performance
+EXPLAIN ANALYZE 
+SELECT * FROM MV_HR_MU_2010_ACTORS;
