@@ -1,17 +1,18 @@
 By Anthony Condezo
 # ready-set-hire
-A 
+A full-stack web-a 
 ## Project Description
 TODO: Add project descripton
 
 ### Features
 TODO: add features 
 
-
 ## Set Up Guide
 Please follow the set up guide to enable hosting the web application and relervant services (llm-server and postgREST) on your local machine. 
 ### PostgreSQL and PostgREST Service
 Open database_set_up.sql and update your authenticator login password (line 44)
+
+Within sub-directory psql-server, run the terminal command "npm install" to install all relervant module dependencies.
 
 Enter sub-directory psql-server and run generate.sh to generate your jwt-secret and jwt-token strings. 
 
