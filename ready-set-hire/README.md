@@ -1,18 +1,37 @@
 By Anthony Condezo
 
-# ready-set-hire
+# ReadySetHire
 
-A full-stack web-application platform which bring potential employers and employees into one place. 
+A **full-stack** web-application, AI-powered platform which bring potential employers and employees together into one place. 
 
 ## Project Description
 
-TODO: Add project descripton
+ReadySetHire is a modern web application designed to streamline the hiring
+process. It provides recruiters with an easy way to set up interviews, add
+interview questions, invite applicants, and automatically capture their spoken
+responses through speech-to-text transcription. By using the latest AI
+technology, ReadySetHire allows applicants to answer naturally in spoken
+language, making the experience more authentic and efficient.
 
+
+This tool can be used for screening applicants at scale and includes
+opportunities to extend functionality with Generative AI, such as providing
+feedback or auto-suggesting interview questions. In the future, ReadySetHire
+could also serve as a practice platform for job seekers, helping them prepare
+for interviews with realistic AI-driven simulations.
 
 ### Features
 
-TODO: add features 
-
+ReadySetHire allows users to:
+- Create, edit, and delete Interviews
+- Add interview questions
+- Invite applicants through unique interview links
+- Applicants answer using an audio recorder, with AI transcription
+converting speech to text
+- One question per page interview flow for clarity and focus
+- Track interview status (Not Started and Completed)
+- Review Applicant question answers
+- Creative Integration of GenAI - question generator
 
 ## Set Up Guide
 
@@ -74,7 +93,11 @@ Please navigate to sub-directory psql-server before proceeding: ```
 
 ### LLM Server
 
-Please navigate to sub-directory llm-server before proceeding:
+Please navigate to sub-directory llm-server before proceeding 
+    ```
+        cd .. ;
+        cd .\\llm-server
+    ```
 
 6) Update supplied .env file with your own OPENAI_API_KEY on line 3.
 
@@ -90,9 +113,11 @@ Please navigate to sub-directory llm-server before proceeding:
 
 ### react-ready-hire
 
-8) Install react client node module dependencies:
+8) Navigate to sub-directory react-ready-set-hire and install react client node module dependencies:
 
     ```Bash
+        cd ..
+        cd .\\react-ready-set-hire\\
         npm install # within sub-directory react-ready-set-hire 
     ```
 
@@ -112,7 +137,7 @@ To start project, open three terminal windows within project directory ready-set
     ```bash
         postgrest ./postgrest.config # within ready-set-hire/psql-server
     ```
-### Start client:
+### Start React client:
 
 3) Terminal window 3: 
     ```bash
