@@ -1,5 +1,7 @@
 # form-base
 
+A full-stack, lightweight, mobile platform enabling enabling fast and fexible data collection for survey researches.
+
 ## Project Description
 
 A Mobile App that builds custom forms for data collection
