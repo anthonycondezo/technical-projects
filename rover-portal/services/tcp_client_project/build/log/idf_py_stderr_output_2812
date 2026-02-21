@@ -1,0 +1,24 @@
+Command: ninja monitor\
+Note: C:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;-m;esp_idf_monitor will search for a serial port. To specify a port, set the ESPPORT environment variable.
+Note: C:/Espressif/python_env/idf5.5_py3.11_env/Scripts/python.exe;-m;esp_idf_monitor will attempt to set baud rate automatically. To specify a baud rate, set the ESPBAUD environment variable.
+--- Using autodetected port COM5
+--- Warning: GDB cannot open serial ports accessed as COMx
+--- Using \\.\COM5 instead...
+--- esp-idf-monitor 1.9.0 on \\.\COM5 115200
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+--- 0x40080400: _invalid_pc_placeholder at C:/Espressif/frameworks/esp-idf-v5.5.2/components/xtensa/xtensa_vectors.S:2235
+--- Error: ClearCommError failed (PermissionError(13, 'Access is denied.', None, 5))
+--- Waiting for the device to reconnect........................................
+--- 0x40080400: _invalid_pc_placeholder at C:/Espressif/frameworks/esp-idf-v5.5.2/components/xtensa/xtensa_vectors.S:2235
+--- Error: ClearCommError failed (PermissionError(13, 'Access is denied.', None, 5))
+--- Waiting for the device to reconnect.................................................................................................................................................................................
+--- 0x40080400: _invalid_pc_placeholder at C:/Espressif/frameworks/esp-idf-v5.5.2/components/xtensa/xtensa_vectors.S:2235
+--- Error: ClearCommError failed (PermissionError(13, 'Access is denied.', None, 5))
+--- Waiting for the device to reconnect..........................................
+--- 0x40080400: _invalid_pc_placeholder at C:/Espressif/frameworks/esp-idf-v5.5.2/components/xtensa/xtensa_vectors.S:2235
+--- Error: ClearCommError failed (PermissionError(13, 'Access is denied.', None, 5))
+--- Waiting for the device to reconnect..................................................
+--- 0x40080400: _invalid_pc_placeholder at C:/Espressif/frameworks/esp-idf-v5.5.2/components/xtensa/xtensa_vectors.S:2235
+--- Error: ClearCommError failed (PermissionError(13, 'Access is denied.', None, 5))
+--- Waiting for the device to reconnect.....................................
+

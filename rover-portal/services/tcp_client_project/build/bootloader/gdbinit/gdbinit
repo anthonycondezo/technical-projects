@@ -1,0 +1,2 @@
+source C:/holonomic-rover/anthony/services/tcp_client_project/build/bootloader/gdbinit/symbols
+source C:/holonomic-rover/anthony/services/tcp_client_project/build/bootloader/gdbinit/connect
