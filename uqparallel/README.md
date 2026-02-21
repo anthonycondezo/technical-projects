@@ -1,17 +1,44 @@
 By Anthony Condezo
 # uqparallel
 
-A program which implements a subset of features of GNU parallel - which allows a series of tasks to be parallelised (up to some maximum number of parallel tasks).
+*uqparallel* is a Unix-style process scheduler that dynamically spawns and manages multiple child processes while enforcing a configurable concurrency limit.
 
 ## Technical Stack
 - C
+- POSIX process control (fork, exec, wait)
+- Unix pipes and file descriptor management
+- Signal handling (SIGCHLD, SIGINT)
+- Concurrency control and job limiting
+- Command-line argument parsing
 - GNU Make
-//TODO: Add more
 
+The following methods was used in program:
+- dup2()
+- kill()
+- waitpid() 
+- sigaction()
 
 ## Project Description
 
-*uqparallel* allows users to run a series of tasks in parallel - with the task commands and/or their arguments coming from the command line, a specified file or from **stdin**. *uqparallel* also creates a pipeline of theose commands (the output of one become the input of the next, etc.) and limit the number of processess running in parallel. The tasks may involve the same command (specified on the command line) with different arguments (coming from the command line, **stdin**, or a specified file); or the tasks may each involve different commands.
+*uqparallel* allows users to run a series of tasks (and/or their arguments) comming from: 
+1. The command line
+2. A specified file 
+3. Standard input (**stdin**)
+
+The program supports: 
+- Parallel execution of independent tasks
+- Sequential execution through job limiting
+- Dynamic pipeline construction between processes
+- Controlled early termination on failure
+- Dry-run simulation mode
+
+This project demonstrates system-level programming concepts including:
+- Process create and lifecycle management
+- Inter-process communication via pipes
+- Signal-based child process reaping
+- Concurrency limiting via active job tracking
+- Pipeline construction using file desriptor redirection
+- Error progagation and controlled shutdown
 
 ## Features
 All features are exposed via command line arguments.
@@ -65,29 +92,58 @@ For the provided examples, assume the following files contains the following:
 3. **./three**
     ```text
         1 ps -Us1234560
-        2 ps -Uuser 2
-        3 ps -Uuser 3
+        2 ps -Uuser2
+        3 ps -Uuser3
     ```
 
 **Examples**
 
-a. The following will execute 2 tasks (in parallel): ```ls -a /etc``` and ```ls -a /usr``` 
+a. Execute 2 tasks (in parallel): ```ls -a /etc``` and ```ls -a /usr``` 
 
     ```bash
         # within terminal 
         ./uqparallel ls -a ::: /etc /usr
     ```
 
-b. This will execute 3 tasks (in parallel): ```wc /etc/motd -c```, ```wc /etc/motd -l``` and ```wc /etc/motd -w```
+b. Execute 3 tasks (in parallel): ```wc /etc/motd -c```, ```wc /etc/motd -l``` and ```wc /etc/motd -w```
 
     ```bash
         # within terminal
         ./uqparallel --argsfile ./one wc /etc/motd
     ```
-c.
+c. Execute pipeline: ```cat /etc/services | grep tcp | wc -l```
+
+    ```bash
+        # within terminal
+        ./uqparallel --argsfile ./two --pipe
+    ```
+
+d. Execute 3 tasks (sequentially): ```whoami```, ```uname``` and ```uptime```
+
+    ```bash
+        # within terminal 
+        ./uqparallel --limitjobs 1 ::: whoami uname uptime
+    ```
+
+e. Execute 3 tasks (in parallel): ```ps -Us1234560```, ```ps -Uuser2``` and ```ps -Uuser3```
+
+    ```bash
+        # within terminal
+        ./uqparallel --argsfile ./three
+    ```
+
+f. Nothing is executed. Rather all three tasks are printed to **stdout**
+
+    ```bash
+        # within termianl
+        ./uqparallel --argsfile ./three --dry-run
+    ```
 
 ## Set Up Guide
 
-Before proceeding, please ensure that your local machine is running a linux distro (e.g. wsl). 
+To compile executable run make witihn project directory.
+
+**NOTE**: Before proceeding, please ensure that your local machine is running a linux distro (e.g. wsl). 
+
 
 
