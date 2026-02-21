@@ -1,14 +1,45 @@
 By Anthony Condezo
 # uqface 
-// TODO: add single sentence description
 
+A concurrent TCP-based image processing service written in C, implementing a custom binary protocol to perform server-side face detection and face replacement using OpenCV. 
+
+**NOTE**: uqfacedetect is undergoing major refactoring changes. See **Set Up Guide** for more details.
+
+## Technical Stack
+- C
+- POSIX sockets
+- TCP netorking
+- Multithreading (pthreads)
+- Custom binary protocol implementation
+- OpenCV (image processing)
+- GNU Make
 ## Project Description
 
-This project consists of a TCP server and TCP client program.  
+This project consists of a multi-threaded TCP server (uqfacedetect) which processes multiple client requests and TCP client program (uqfaceclient) which send server request and handles server responses before terminating. Server requests inlclude:
+
+1. Detecting faces in supplied image by circling them out 
+2. Replacing all faces in supplied image with another replace-image (which is also sent over by the client).  
+
+
+This project demonstrates system-level programing concepts including: 
+- Concurrent TCP socket programming
+- Thread management and connection limiting
+- Custom binary protoco parsing
+- Memory-safe handling of arbitary binary payloads
+- Server-side image processing using OpenCV
+
+
 
 ### uqfacedetect
 
-*uqfacedetect* is a networked, multithreaded image processing server allowing clients to connect, send an image for manipulation (and an optional image to replace faces with), and then return a manipulated image to the client. All communication between clients and the server is over TCP using a message format described with **Communication Protocol** section.
+*uqfacedetect* is a concurrent TCP server that:
+- Accpets multiple simultaneous client connections
+- Enforces configurable connections and payload size limits
+- Parses and validates structured binary protocol messages
+- Performs server-side face detection and transformations using OpenCV
+- Returns processed iamge data over the same TCP conenction
+
+For more information on the binary protocol - see **Communication Protocol**
 
 ### uqfaceclient
 
@@ -29,8 +60,6 @@ Both *uqfaceclient* and *uqfacedetact* are implemented to abide by a custom comm
 |       *M*       | Bytes | **Image 1 data** - the data for image 1. the bytes may have any value. If the operation type is 3, then this is the data for the error message.
 |       4         | 32-bit unsigned integer | **Image 2 size (only present in face replacement requests)** - number of bytes (*N*) of image 2, which is the iamge to replace faces with.
 |       *N*       | Bytes | **Image 2 data (only present in face replacement requests)** - the data for image 2. The bytes may have any value.
-
-
 
 ## Features
 All features are exposed via command line arguments.
@@ -76,13 +105,8 @@ All features are exposed via command line arguments.
 
 ## Set Up Guide
 
-To compile executables uqfacedetect and uqfaceclient, please run "make" command in the terminal. This will compile both with all necessary libraries. 
+### Refactoring Note: 
+This project is currently being modernised to migrate from the deprecated OpenCV C API to the OpenCV 4 C++ API (c++11 compliant).
 
-//TOOO: double check if you need to add more detail
-
-## Example Usage
-
-### uqfacedetect
-
-### uqfaceclient
+Thank you for your patience.
 

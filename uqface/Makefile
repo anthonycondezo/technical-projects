@@ -42,7 +42,8 @@ uqfaceclient: uqfaceclient.c
 
 # uqfacedetect is the target and uqfacedetect.c is the dependency
 uqfacedetect: uqfacedetect.c
-	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
+	#$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
+	$(CC) $(CFLAGS) $^ -o $@ `pkg-config --cflags --libs opencv4`
 
 # Remove object and binary files
 clean:
